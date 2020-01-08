@@ -6,14 +6,9 @@ use Illuminate\Http\Request;
 
 class OrderTwoController extends Controller
 {
-    public function createj(Request $request)
+    public function create(Request $request)
     {
-        \Log::info('order2',[$request]);
-    }
-
-    public function createm(Request $request)
-    {
-        \Log::info('order2',[$request]);
+        \Log::info('order-two',[$request->post('order_id')]);
     }
 
     public function refundReject(Request $request)

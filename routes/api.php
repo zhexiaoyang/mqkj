@@ -3,7 +3,7 @@
 
 Route::group(['prefix' => 'm'], function () {
     // 创建订单
-    Route::post('order/create', 'OrderController@createm')->name('m.order.refund.createm');
+    Route::post('order/create', 'OrderController@create')->name('m.order.refund.create');
     // 订单取消
     Route::get('order/cancel', function() {
         return json_encode(['data' => 'ok']);
@@ -27,7 +27,7 @@ Route::group(['prefix' => 'm'], function () {
 
 Route::group(['prefix' => 'j'], function () {
     // 创建订单
-    Route::post('order/create', 'OrderTwoController@createj')->name('m.order.refund.createj');
+    Route::post('order/create', 'OrderTwoController@create')->name('j.order.refund.create');
     // 订单取消
     Route::get('order/cancel', function() {
         return json_encode(['data' => 'ok']);
@@ -41,9 +41,9 @@ Route::group(['prefix' => 'j'], function () {
         return json_encode(['data' => 'ok']);
     });
 
-    Route::post('order/refund/reject', 'OrderTwoController@refundReject')->name('m.order.refund.reject');
-    Route::post('order/refund/agree', 'OrderTwoController@refundAgree')->name('m.order.refund.agree');
-    Route::post('order/batchPullPhoneNumber', 'OrderTwoController@batchPullPhoneNumber')->name('m.order.batchPullPhoneNumber');
-    Route::post('order/confirm', 'OrderTwoController@confirm')->name('m.order.confirm');
-    Route::post('order/cancel', 'OrderTwoController@cancel')->name('m.order.cancel');
+    Route::post('order/refund/reject', 'OrderTwoController@refundReject')->name('j.order.refund.reject');
+    Route::post('order/refund/agree', 'OrderTwoController@refundAgree')->name('j.order.refund.agree');
+    Route::post('order/batchPullPhoneNumber', 'OrderTwoController@batchPullPhoneNumber')->name('j.order.batchPullPhoneNumber');
+    Route::post('order/confirm', 'OrderTwoController@confirm')->name('j.order.confirm');
+    Route::post('order/cancel', 'OrderTwoController@cancel')->name('j.order.cancel');
 });
