@@ -4,15 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "722bd975ea22fed3eea189c6bcffe2b1",
+    "content-hash": "cad0b0a849aee19202d81c6fa17b783c",
     "packages": [
         {
             "name": "buoly/meituan-takeaway",
-            "version": "dev-master",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/buoly/meituan-takeaway.git",
+                "reference": "c21bdad8f5fcd9619bde5e0a6064371af17b0b9d"
+            },
             "dist": {
-                "type": "path",
-                "url": "../package/meituan-takeaway",
-                "reference": "6b66d998f4fe5c6487d8c300a27a3a37a838874a"
+                "type": "zip",
+                "url": "https://api.github.com/repos/buoly/meituan-takeaway/zipball/c21bdad8f5fcd9619bde5e0a6064371af17b0b9d",
+                "reference": "c21bdad8f5fcd9619bde5e0a6064371af17b0b9d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.5",
@@ -24,10 +36,12 @@
                     "Buoly\\MeituanTakeaway\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "meituan open api"
+            "description": "meituan open api",
+            "time": "2020-01-08T08:35:56+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -5914,9 +5928,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "buoly/meituan-takeaway": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
