@@ -5,7 +5,7 @@ Route::group(['prefix' => 'm'], function () {
     // 创建订单
     Route::post('order/create', 'OrderController@create')->name('m.order.refund.create');
     // 订单取消
-    Route::get('order/cancel_n', function() {
+    Route::get('order/cancel', function() {
         return json_encode(['data' => 'ok']);
     });
     // 催单
@@ -14,30 +14,6 @@ Route::group(['prefix' => 'm'], function () {
     });
     // 降级
     Route::post('order/jiang', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 退款
-    Route::post('order/refund', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 状态
-    Route::post('order/status', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 确认
-    Route::post('order/confirm_n', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 门店状态
-    Route::post('shop/status', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 完成
-    Route::post('order/over', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 结算
-    Route::post('order/jie', function() {
         return json_encode(['data' => 'ok']);
     });
 
@@ -53,7 +29,7 @@ Route::group(['prefix' => 'j'], function () {
     // 创建订单
     Route::post('order/create', 'OrderTwoController@create')->name('j.order.refund.create');
     // 订单取消
-    Route::get('order/cancel_n', function() {
+    Route::get('order/cancel', function() {
         return json_encode(['data' => 'ok']);
     });
     // 催单
@@ -62,30 +38,6 @@ Route::group(['prefix' => 'j'], function () {
     });
     // 降级
     Route::post('order/jiang', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 退款
-    Route::post('order/refund', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 状态
-    Route::post('order/status', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 确认
-    Route::post('order/confirm_n', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 门店状态
-    Route::post('shop/status', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 完成
-    Route::post('order/over', function() {
-        return json_encode(['data' => 'ok']);
-    });
-    // 结算
-    Route::post('order/jie', function() {
         return json_encode(['data' => 'ok']);
     });
 
