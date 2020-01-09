@@ -8,7 +8,7 @@ class OrderController extends Controller
 {
     public function create(Request $request)
     {
-        \Log::info('order',[$request->post('order_id')]);
+        \Log::info('order',[$request->all()]);
         return json_encode(['data' => 'ok']);
     }
 

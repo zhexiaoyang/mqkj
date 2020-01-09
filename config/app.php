@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'log' => 'daily',
+
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
