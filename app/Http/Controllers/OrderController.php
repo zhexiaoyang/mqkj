@@ -9,6 +9,7 @@ class OrderController extends Controller
     public function create(Request $request)
     {
         \Log::info('order',[$request->post('order_id')]);
+        return json_encode(['data' => 'ok']);
     }
 
     public function refundReject(Request $request)
