@@ -25,7 +25,7 @@ Route::group(['prefix' => 'm'], function () {
         return json_encode(['data' => 'ok']);
     });
     // 确认
-    Route::post('order/confirm', function() {
+    Route::post('order/confirm1', function() {
         return json_encode(['data' => 'ok']);
     });
     // 门店状态
@@ -73,7 +73,7 @@ Route::group(['prefix' => 'j'], function () {
         return json_encode(['data' => 'ok']);
     });
     // 确认
-    Route::post('order/confirm', function() {
+    Route::post('order/confirm1', function() {
         return json_encode(['data' => 'ok']);
     });
     // 门店状态
