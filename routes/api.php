@@ -16,6 +16,30 @@ Route::group(['prefix' => 'm'], function () {
     Route::post('order/jiang', function() {
         return json_encode(['data' => 'ok']);
     });
+    // 退款
+    Route::get('order/refund', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 状态
+    Route::post('order/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 确认
+    Route::post('order/confirm_n', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 门店状态
+    Route::post('shop/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 完成
+    Route::post('order/over', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 结算
+    Route::post('order/jie', function() {
+        return json_encode(['data' => 'ok']);
+    });
 
     Route::post('order/refund/reject', 'OrderController@refundReject')->name('m.order.refund.reject');
     Route::post('order/refund/agree', 'OrderController@refundAgree')->name('m.order.refund.agree');
@@ -38,6 +62,30 @@ Route::group(['prefix' => 'j'], function () {
     });
     // 降级
     Route::post('order/jiang', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 退款
+    Route::get('order/refund', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 状态
+    Route::post('order/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 确认
+    Route::post('order/confirm_n', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 门店状态
+    Route::post('shop/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 完成
+    Route::post('order/over', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 结算
+    Route::post('order/jie', function() {
         return json_encode(['data' => 'ok']);
     });
 
