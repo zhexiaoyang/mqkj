@@ -5,7 +5,7 @@ Route::group(['prefix' => 'm'], function () {
     // 创建订单
     Route::post('order/create', 'OrderController@create')->name('m.order.refund.create');
     // 订单取消
-    Route::get('order/cancel', function() {
+    Route::get('order/cancel_n', function() {
         return json_encode(['data' => 'ok']);
     });
     // 催单
@@ -25,7 +25,7 @@ Route::group(['prefix' => 'm'], function () {
         return json_encode(['data' => 'ok']);
     });
     // 确认
-    Route::post('order/confirm1', function() {
+    Route::post('order/confirm_n', function() {
         return json_encode(['data' => 'ok']);
     });
     // 门店状态
@@ -53,7 +53,7 @@ Route::group(['prefix' => 'j'], function () {
     // 创建订单
     Route::post('order/create', 'OrderTwoController@create')->name('j.order.refund.create');
     // 订单取消
-    Route::get('order/cancel', function() {
+    Route::get('order/cancel_n', function() {
         return json_encode(['data' => 'ok']);
     });
     // 催单
@@ -73,7 +73,7 @@ Route::group(['prefix' => 'j'], function () {
         return json_encode(['data' => 'ok']);
     });
     // 确认
-    Route::post('order/confirm1', function() {
+    Route::post('order/confirm_n', function() {
         return json_encode(['data' => 'ok']);
     });
     // 门店状态
