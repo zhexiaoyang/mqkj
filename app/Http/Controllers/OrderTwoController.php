@@ -8,8 +8,11 @@ class OrderTwoController extends Controller
 {
     public function create(Request $request)
     {
-        \Log::info('order-two',[$request->all()]);
-        return json_encode(['data' => 'ok']);
+        if ($request->get('order_id')) {
+            \Log::info('order',[$request->all()]);
+            return json_encode(['data' => 'ok']);
+        }
+        return 200;
     }
 
     public function refundReject(Request $request)
