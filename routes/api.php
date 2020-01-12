@@ -5,9 +5,10 @@ Route::group(['prefix' => 'm'], function () {
     // 创建订单
     Route::post('order/create', 'OrderController@create')->name('m.order.refund.create');
     // 订单取消
-    Route::get('order/cancel', function() {
-        return json_encode(['data' => 'ok']);
-    });
+    Route::get('order/cancel', 'OrderController@get_cancel')->name('m.order.get_cancel');
+    // Route::get('order/cancel', function() {
+    //     return json_encode(['data' => 'ok']);
+    // });
     // 催单
     Route::post('order/cui', function() {
         return json_encode(['data' => 'ok']);
@@ -37,9 +38,7 @@ Route::group(['prefix' => 'm'], function () {
         return json_encode(['data' => 'ok']);
     });
     // 结算
-    Route::post('order/jie', function() {
-        return json_encode(['data' => 'ok']);
-    });
+    Route::post('order/jie', 'OrderController@jie')->name('m.order.jie');
 
     Route::post('order/refund/reject', 'OrderController@refundReject')->name('m.order.refund.reject');
     Route::post('order/refund/agree', 'OrderController@refundAgree')->name('m.order.refund.agree');
@@ -53,9 +52,10 @@ Route::group(['prefix' => 'j'], function () {
     // 创建订单
     Route::post('order/create', 'OrderTwoController@create')->name('j.order.refund.create');
     // 订单取消
-    Route::get('order/cancel', function() {
-        return json_encode(['data' => 'ok']);
-    });
+    Route::get('order/cancel', 'OrderTwoController@get_cancel')->name('j.order.get_cancel');
+    // Route::get('order/cancel', function() {
+    //     return json_encode(['data' => 'ok']);
+    // });
     // 催单
     Route::post('order/cui', function() {
         return json_encode(['data' => 'ok']);
@@ -85,9 +85,10 @@ Route::group(['prefix' => 'j'], function () {
         return json_encode(['data' => 'ok']);
     });
     // 结算
-    Route::post('order/jie', function() {
-        return json_encode(['data' => 'ok']);
-    });
+    Route::post('order/jie', 'OrderTwoController@jie')->name('j.order.jie');
+    // Route::post('order/jie', function() {
+    //     return json_encode(['data' => 'ok']);
+    // });
 
     Route::post('order/refund/reject', 'OrderTwoController@refundReject')->name('j.order.refund.reject');
     Route::post('order/refund/agree', 'OrderTwoController@refundAgree')->name('j.order.refund.agree');

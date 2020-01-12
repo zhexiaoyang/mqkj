@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class OrderTwoController extends Controller
 {
+    public function jie(Request $request)
+    {
+        if ($request->get('order_id')) {
+            \Log::info('jie_order',[$request->all()]);
+            file_get_contents('http://psapi.625buy.com/api/order/sync?type=3&order_id='.$request->get('order_id'));
+            return json_encode(['data' => 'ok']);
+        }
+        return 200;
+    }
+
     public function create(Request $request)
     {
         if ($request->get('order_id')) {
@@ -46,5 +56,15 @@ class OrderTwoController extends Controller
     {
         $meituan = app('takeaway2');
         return $meituan->order->cancel(['order_id' => $request->order_id]);
+    }
+
+    public function get_cancel(Request $request)
+    {
+        if ($request->get('order_id')) {
+            \Log::info('cancel_order',[$request->all()]);
+            file_get_contents('http://psapi.625buy.com/api/order/cancel?type=2&order_id='.$request->get('order_id'));
+            return json_encode(['data' => 'ok']);
+        }
+        return 200;
     }
 }
