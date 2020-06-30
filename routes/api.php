@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 
+/**
+ * 毛绒熊
+ */
 Route::group(['prefix' => 'm'], function () {
     // 创建订单
     Route::post('order/create', 'OrderController@create')->name('m.order.refund.create');
@@ -47,7 +51,9 @@ Route::group(['prefix' => 'm'], function () {
     Route::post('order/cancel', 'OrderController@cancel')->name('m.order.cancel');
 });
 
-
+/**
+ * 洁爱眼
+ */
 Route::group(['prefix' => 'j'], function () {
     // 创建订单
     Route::post('order/create', 'OrderTwoController@create')->name('j.order.refund.create');
@@ -95,4 +101,49 @@ Route::group(['prefix' => 'j'], function () {
     Route::post('order/batchPullPhoneNumber', 'OrderTwoController@batchPullPhoneNumber')->name('j.order.batchPullPhoneNumber');
     Route::post('order/confirm', 'OrderTwoController@confirm')->name('j.order.confirm');
     Route::post('order/cancel', 'OrderTwoController@cancel')->name('j.order.cancel');
+});
+
+/**
+ * 民康
+ */
+Route::group(['prefix' => 'minkang'], function () {
+    // 创建订单
+    Route::post('order/create', 'OrderMinKangController@create')->name('minkang.order.refund.create');
+    // 订单取消
+    Route::get('order/cancel', 'OrderMinKangController@get_cancel')->name('minkang.order.get_cancel');
+    // 催单
+    Route::post('order/cui', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 降级
+    Route::post('order/jiang', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 退款
+    Route::get('order/refund', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 状态
+    Route::post('order/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 确认
+    Route::post('order/confirm_n', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 门店状态
+    Route::post('shop/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 完成
+    Route::post('order/over', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 结算
+    Route::post('order/jie', 'OrderMinKangController@jie')->name('minkang.order.jie');
+    Route::post('order/refund/reject', 'OrderMinKangController@refundReject')->name('minkang.order.refund.reject');
+    Route::post('order/refund/agree', 'OrderMinKangController@refundAgree')->name('minkang.order.refund.agree');
+    Route::post('order/batchPullPhoneNumber', 'OrderMinKangController@batchPullPhoneNumber')->name('minkang.order.batchPullPhoneNumber');
+    Route::post('order/confirm', 'OrderMinKangController@confirm')->name('minkang.order.confirm');
+    Route::post('order/cancel', 'OrderMinKangController@cancel')->name('minkang.order.cancel');
 });

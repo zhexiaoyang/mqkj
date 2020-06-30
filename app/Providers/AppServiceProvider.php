@@ -30,6 +30,14 @@ class AppServiceProvider extends ServiceProvider
             ];
             return new MeituanTakeaway($config);
         });
+        $this->app->singleton('minkang', function () {
+            $config = [
+                'app_id' => 5172,
+                'app_secret' => '16000d3fb478ee4dfd5a9dd63155e958',
+                'log_path' => storage_path('/logs/minkang.log'),
+            ];
+            return new MeituanTakeaway($config);
+        });
     }
 
     /**
