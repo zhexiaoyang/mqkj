@@ -9,8 +9,8 @@ class OrderMinKangController extends Controller
     public function jie(Request $request)
     {
         if ($request->get('order_id')) {
-            \Log::info('民康订单-创建',[$request->all()]);
-            file_get_contents('http://psapi.625buy.com/api/order/sync?type=4&order_id='.$request->get('order_id'));
+            // \Log::info('民康订单-创建',[$request->all()]);
+            // file_get_contents('http://psapi.625buy.com/api/order/sync?type=4&order_id='.$request->get('order_id'));
             return json_encode(['data' => 'ok']);
         }
         return 200;
@@ -61,8 +61,8 @@ class OrderMinKangController extends Controller
     public function get_cancel(Request $request)
     {
         if ($request->get('order_id')) {
-            \Log::info('民康订单-取消',[$request->all()]);
-            file_get_contents('http://psapi.625buy.com/api/order/cancel?type=4&order_id='.$request->get('order_id'));
+            // \Log::info('民康订单-取消',[$request->all()]);
+            // file_get_contents('http://psapi.625buy.com/api/order/cancel?type=4&order_id='.$request->get('order_id'));
             return json_encode(['data' => 'ok']);
         }
         return 200;
