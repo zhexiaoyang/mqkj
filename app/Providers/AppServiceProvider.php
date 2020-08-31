@@ -38,6 +38,14 @@ class AppServiceProvider extends ServiceProvider
             ];
             return new MeituanTakeaway($config);
         });
+        $this->app->singleton('qinqu', function () {
+            $config = [
+                'app_id' => 5337,
+                'app_secret' => '7ba2a763136cc5cf799fb0dadeafe94a',
+                'log_path' => storage_path('/logs/qinqu.log'),
+            ];
+            return new MeituanTakeaway($config);
+        });
     }
 
     /**

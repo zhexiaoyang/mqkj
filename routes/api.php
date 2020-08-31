@@ -147,3 +147,50 @@ Route::group(['prefix' => 'minkang'], function () {
     Route::post('order/confirm', 'OrderMinKangController@confirm')->name('minkang.order.confirm');
     Route::post('order/cancel', 'OrderMinKangController@cancel')->name('minkang.order.cancel');
 });
+
+/**
+ * 寝取
+ */
+Route::group(['prefix' => 'qinqu'], function () {
+    // 创建订单
+    Route::post('order/create', 'OrderQinQuController@create')->name('qinqu.order.refund.create');
+    // 订单取消
+    Route::get('order/cancel', 'OrderQinQuController@get_cancel')->name('qinqu.order.get_cancel');
+    // 催单
+    Route::post('order/cui', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 降级
+    Route::post('order/jiang', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 退款
+    Route::get('order/refund', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 状态
+    Route::post('order/status', function() {
+        \Log::info('推送确认订单', [request()->all()]);
+        return json_encode(['data' => 'ok']);
+    });
+    // 确认
+    Route::post('order/confirm_n', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 门店状态
+    Route::post('shop/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 完成
+    Route::post('order/over', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 结算
+    Route::post('order/jie', 'OrderQinQuController@jie')->name('qinqu.order.jie');
+    /* 操作 */
+    Route::post('order/refund/reject', 'OrderQinQuController@refundReject')->name('qinqu.order.refund.reject');
+    Route::post('order/refund/agree', 'OrderQinQuController@refundAgree')->name('qinqu.order.refund.agree');
+    Route::post('order/batchPullPhoneNumber', 'OrderQinQuController@batchPullPhoneNumber')->name('qinqu.order.batchPullPhoneNumber');
+    Route::post('order/confirm', 'OrderQinQuController@confirm')->name('qinqu.order.confirm');
+    Route::post('order/cancel', 'OrderQinQuController@cancel')->name('qinqu.order.cancel');
+});
