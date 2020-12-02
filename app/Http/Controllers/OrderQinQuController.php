@@ -10,7 +10,7 @@ class OrderQinQuController extends Controller
     {
         if ($request->get('order_id')) {
             \Log::info('寝趣订单-接单',[$request->all()]);
-            // file_get_contents('http://psapi.625buy.com/api/order/sync?type=5&order_id='.$request->get('order_id'));
+            file_get_contents('http://psapi.625buy.com/api/order/sync?type=5&order_id='.$request->get('order_id'));
             return json_encode(['data' => 'ok']);
         }
         return 200;
@@ -61,8 +61,8 @@ class OrderQinQuController extends Controller
     public function get_cancel(Request $request)
     {
         if ($request->get('order_id')) {
-            // \Log::info('寝趣订单-取消',[$request->all()]);
-            // file_get_contents('http://psapi.625buy.com/api/order/cancel?type=5&order_id='.$request->get('order_id'));
+            \Log::info('寝趣订单-取消',[$request->all()]);
+            file_get_contents('http://psapi.625buy.com/api/order/cancel?type=5&order_id='.$request->get('order_id'));
             return json_encode(['data' => 'ok']);
         }
         return 200;
