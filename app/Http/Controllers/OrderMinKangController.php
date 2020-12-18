@@ -6,20 +6,50 @@ use Illuminate\Http\Request;
 
 class OrderMinKangController extends Controller
 {
+    /**
+     * 推送订单结算信息
+     */
     public function jie(Request $request)
     {
         if ($request->get('order_id')) {
-            \Log::info('民康订单-接单',[$request->all()]);
+            \Log::info('民康-推送订单结算信息',[$request->all()]);
             file_get_contents('http://psapi.625buy.com/api/order/sync?type=4&order_id='.$request->get('order_id'));
             return json_encode(['data' => 'ok']);
         }
         return 200;
     }
 
+    /**
+     * 推送已支付订单
+     */
     public function create(Request $request)
     {
         if ($request->get('order_id')) {
-            \Log::info('民康订单-下单',[$request->all()]);
+            \Log::info('民康-推送已支付订单',[$request->all()]);
+            return json_encode(['data' => 'ok']);
+        }
+        return 200;
+    }
+
+    /**
+     * 推送已完成订单
+     */
+    public function over(Request $request)
+    {
+        if ($request->get('order_id')) {
+            \Log::info('民康-推送已完成订单',[$request->all()]);
+            return json_encode(['data' => 'ok']);
+        }
+        return 200;
+    }
+
+    /**
+     * 推送已确认订单
+     */
+    public function confirm_n(Request $request)
+    {
+        if ($request->get('order_id')) {
+            \Log::info('民康-推送已确认订单',[$request->all()]);
             return json_encode(['data' => 'ok']);
         }
         return 200;

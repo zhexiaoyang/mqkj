@@ -127,18 +127,14 @@ Route::group(['prefix' => 'minkang'], function () {
     Route::post('order/status', function() {
         return json_encode(['data' => 'ok']);
     });
-    // 确认
-    Route::post('order/confirm_n', function() {
-        return json_encode(['data' => 'ok']);
-    });
     // 门店状态
     Route::post('shop/status', function() {
         return json_encode(['data' => 'ok']);
     });
+    // 确认
+    Route::post('order/confirm_n', 'OrderMinKangController@confirm_n')->name('minkang.order.confirm_n');
     // 完成
-    Route::post('order/over', function() {
-        return json_encode(['data' => 'ok']);
-    });
+    Route::post('order/over', 'OrderMinKangController@over')->name('minkang.order.over');
     // 结算
     Route::post('order/jie', 'OrderMinKangController@jie')->name('minkang.order.jie');
     Route::post('order/refund/reject', 'OrderMinKangController@refundReject')->name('minkang.order.refund.reject');
