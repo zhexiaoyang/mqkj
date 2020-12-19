@@ -55,7 +55,7 @@ class OrderMinKangController extends Controller
                 "total" => $request->get("total", 0),
                 "original_price" => $request->get("original_price", 0),
                 "caution" => urldecode($request->get("caution", "")),
-                "shipper_phone" => $request->get("shipper_phone", ""),
+                "shipper_phone" => $request->get("shipper_phone", "") ?? "",
                 "status" => $request->get("status", 0),
                 "ctime" => $request->get("ctime", 0),
                 "utime" => $request->get("utime", 0),
