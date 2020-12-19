@@ -82,10 +82,10 @@ class OrderMinKangController extends Controller
                 $order_data["extras"] = urldecode($extras);
             }
             // 商品优惠信息
-            $sku_benefit_detail = $request->get("sku_benefit_detail");
-            if ($sku_benefit_detail) {
-                $order_data["sku_benefit_detail"] = urldecode($sku_benefit_detail);
-            }
+            // $sku_benefit_detail = $request->get("sku_benefit_detail");
+            // if ($sku_benefit_detail) {
+            //     $order_data["sku_benefit_detail"] = urldecode($sku_benefit_detail);
+            // }
             // 订单商品信息
             $detail = $request->get("detail");
 
