@@ -69,6 +69,8 @@ class OrderMinKangController extends Controller
                 "package_bag_money" => $request->get("package_bag_money", 0),
                 "package_bag_money_yuan" => $request->get("package_bag_money_yuan", ""),
                 "total_weight" => $request->get("total_weight", 0),
+                "mt_created_at" => date("Y-m-d H:i:s", $request->get("ctime", 0)),
+                "mt_updated_at" => date("Y-m-d H:i:s", $request->get("utime", 0)),
             ];
 
             // 商家对账
