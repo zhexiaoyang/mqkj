@@ -70,7 +70,6 @@ class OrderMinKangController extends Controller
                 "package_bag_money_yuan" => $request->get("package_bag_money_yuan"),
                 "total_weight" => $request->get("total_weight"),
             ];
-            \Log::info('民康-推送已完成订单', $order_data);
 
             // 商家对账
             $poi_receive_detail_yuan = $request->get("poi_receive_detail_yuan");
@@ -89,6 +88,8 @@ class OrderMinKangController extends Controller
             }
             // 订单商品信息
             $detail = $request->get("detail");
+
+            \Log::info('民康-推送已完成订单', $order_data);
 
             // 创建订单
             $order = new MtOrder($order_data);
