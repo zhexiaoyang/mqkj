@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MtOrder;
+use App\Models\MtOrderItem;
 use Illuminate\Http\Request;
 
 class OrderMinKangController extends Controller
@@ -37,9 +39,9 @@ class OrderMinKangController extends Controller
     public function over(Request $request)
     {
         if ($request->get('order_id')) {
-            $order = [
+            $order_data = [
                 "order_id" => $request->get("order_id"),
-                "order_tag_list" => $request->get("order_tag_list"),
+                "order_tag_list" => urldecode($request->get("order_tag_list")),
                 "wm_order_id_view" => $request->get("wm_order_id_view"),
                 "app_poi_code" => $request->get("app_poi_code"),
                 "wm_poi_name" => urldecode($request->get("wm_poi_name")),
@@ -68,27 +70,53 @@ class OrderMinKangController extends Controller
                 "package_bag_money_yuan" => $request->get("package_bag_money_yuan"),
                 "total_weight" => $request->get("total_weight"),
             ];
-            \Log::info('民康-推送已完成订单', $order);
+            \Log::info('民康-推送已完成订单', $order_data);
 
             // 商家对账
             $poi_receive_detail_yuan = $request->get("poi_receive_detail_yuan");
             if ($poi_receive_detail_yuan) {
-                $duizhang = json_decode(urldecode($poi_receive_detail_yuan), true);
-                if (!empty($duizhang)) {
-                    \Log::info('民康-完成订单-对账列表', $duizhang);
-                }
+                $order_data["poi_receive_detail_yuan"] = urldecode($poi_receive_detail_yuan);
             }
             // 订单优惠信息
-            // $extras = $request->get("extras");
+            $extras = $request->get("extras");
+            if ($extras) {
+                $order_data["extras"] = urldecode($extras);
+            }
             // 商品优惠信息
-            // $sku_benefit_detail = $request->get("sku_benefit_detail");
+            $sku_benefit_detail = $request->get("sku_benefit_detail");
+            if ($sku_benefit_detail) {
+                $order_data["sku_benefit_detail"] = urldecode($sku_benefit_detail);
+            }
             // 订单商品信息
             $detail = $request->get("detail");
-            if ($detail) {
+
+            // 创建订单
+            $order = new MtOrder($order_data);
+            if ($order->save() && $detail) {
                 $products = json_decode(urldecode($detail), true);
                 if (!empty($products)) {
                     \Log::info('民康-完成订单-商品列表', $products);
+                    $goods_price = 0;
+                    $items = [];
+                    foreach ($products as $product) {
+                        $goods_price += $product['price'] * 100 * $product['quantity'];
+                        $tmp['order_id'] = $order->id;
+                        $tmp['app_food_code'] = $product['app_food_code'];
+                        $tmp['food_name'] = $product['food_name'];
+                        $tmp['sku_id'] = $product['sku_id'];
+                        $tmp['upc'] = $product['upc'];
+                        $tmp['quantity'] = $product['quantity'];
+                        $tmp['price'] = $product['price'];
+                        $tmp['box_num'] = $product['box_num'];
+                        $tmp['box_price'] = $product['box_price'];
+                        $tmp['unit'] = $product['unit'];
+                        $tmp['spec'] = $product['spec'];
+                        $tmp['weight'] = $product['weight'];
+                        $items[] = $tmp;
+                    }
                 }
+                $order->goods_price = $goods_price / 100;
+                MtOrderItem::query()->create($items);
             }
             return json_encode(['data' => 'ok']);
         }
