@@ -73,7 +73,7 @@ class OrderMinKangController extends Controller
             // 商家对账
             $poi_receive_detail_yuan = $request->get("poi_receive_detail_yuan");
             if ($poi_receive_detail_yuan) {
-                $duizhang = json_decode(urldecode($poi_receive_detail_yuan));
+                $duizhang = json_decode(urldecode($poi_receive_detail_yuan), true);
                 if (!empty($duizhang)) {
                     \Log::info('民康-完成订单-对账列表', $duizhang);
                 }
@@ -85,7 +85,7 @@ class OrderMinKangController extends Controller
             // 订单商品信息
             $detail = $request->get("detail");
             if ($detail) {
-                $products = json_decode(urldecode($detail));
+                $products = json_decode(urldecode($detail), true);
                 if (!empty($products)) {
                     \Log::info('民康-完成订单-商品列表', $products);
                 }
