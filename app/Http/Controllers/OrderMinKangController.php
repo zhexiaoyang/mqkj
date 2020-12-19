@@ -117,6 +117,7 @@ class OrderMinKangController extends Controller
                     }
                 }
                 $order->goods_price = $goods_price / 100;
+                $order->save();
                 MtOrderItem::query()->insert($items);
             }
             return json_encode(['data' => 'ok']);
