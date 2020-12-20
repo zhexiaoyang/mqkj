@@ -14,7 +14,7 @@ class OrderMinKangController extends Controller
     public function jie(Request $request)
     {
         if ($request->get('order_id')) {
-            \Log::info('民康-推送订单结算信息',[$request->all()]);
+            \Log::info('民康-推送订单结算信息',[$request->get('order_id')]);
             file_get_contents('http://psapi.625buy.com/api/order/sync?type=4&order_id='.$request->get('order_id'));
             return json_encode(['data' => 'ok']);
         }
@@ -27,7 +27,7 @@ class OrderMinKangController extends Controller
     public function create(Request $request)
     {
         if ($request->get('order_id')) {
-            \Log::info('民康-推送已支付订单',[$request->all()]);
+            \Log::info('民康-推送已支付订单',[$request->get('order_id')]);
             return json_encode(['data' => 'ok']);
         }
         return 200;
@@ -133,7 +133,7 @@ class OrderMinKangController extends Controller
     public function confirm_n(Request $request)
     {
         if ($request->get('order_id')) {
-            \Log::info('民康-推送已确认订单',[$request->all()]);
+            \Log::info('民康-推送已确认订单',[$request->get('order_id')]);
             return json_encode(['data' => 'ok']);
         }
         return 200;
