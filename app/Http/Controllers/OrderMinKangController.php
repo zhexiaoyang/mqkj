@@ -15,7 +15,8 @@ class OrderMinKangController extends Controller
     {
         if ($request->get('order_id')) {
             \Log::info('民康-推送订单结算信息',[$request->get('order_id')]);
-            file_get_contents('http://psapi.625buy.com/api/order/sync?type=4&order_id='.$request->get('order_id'));
+            $res = file_get_contents('http://psapi.625buy.com/api/order/sync?type=4&order_id='.$request->get('order_id'));
+            \Log::info('民康-推送美全达返回',[$res]);
             return json_encode(['data' => 'ok']);
         }
         return 200;
