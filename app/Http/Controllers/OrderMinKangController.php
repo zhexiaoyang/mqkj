@@ -14,7 +14,19 @@ class OrderMinKangController extends Controller
     public function jie(Request $request)
     {
         if ($request->get('order_id')) {
-            \Log::info('民康-推送订单结算信息',[$request->get('order_id'), $request->get('status')]);
+            \Log::info('民康-*推送订单结算信息*',[$request->get('order_id'), $request->get('status')]);
+            return json_encode(['data' => 'ok']);
+        }
+        return 200;
+    }
+
+    /**
+     * 推送已支付订单
+     */
+    public function create(Request $request)
+    {
+        if ($request->get('order_id')) {
+            \Log::info('民康-推送已支付订单',[$request->get('order_id'), $request->get('status')]);
             $res_str = file_get_contents('http://psapi.625buy.com/api/order/sync?type=4&order_id='.$request->get('order_id'));
             \Log::info('民康-推送美全达返回',[$res_str]);
             if ($res_str) {
@@ -27,18 +39,6 @@ class OrderMinKangController extends Controller
                 \Log::info('民康-推送美全达返回-无返回');
                 file_get_contents('http://psapi.625buy.com/api/order/sync?type=4&order_id='.$request->get('order_id'));
             }
-            return json_encode(['data' => 'ok']);
-        }
-        return 200;
-    }
-
-    /**
-     * 推送已支付订单
-     */
-    public function create(Request $request)
-    {
-        if ($request->get('order_id')) {
-            \Log::info('民康-*推送已支付订单*',[$request->get('order_id')]);
             return json_encode(['data' => 'ok']);
         }
         return 200;
