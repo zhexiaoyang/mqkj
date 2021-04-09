@@ -170,9 +170,10 @@ Route::group(['prefix' => 'qinqu'], function () {
         return json_encode(['data' => 'ok']);
     });
     // 确认
-    Route::post('order/confirm_n', function() {
-        return json_encode(['data' => 'ok']);
-    });
+    Route::post('order/confirm_n', 'OrderQinQuController@confirm_n')->name('qinqu.order.confirm_n');
+    // Route::post('order/confirm_n', function() {
+    //     return json_encode(['data' => 'ok']);
+    // });
     // 门店状态
     Route::post('shop/status', function() {
         return json_encode(['data' => 'ok']);
