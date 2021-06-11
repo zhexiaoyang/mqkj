@@ -14,6 +14,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('test', function () {
+            $config = [
+                'app_id' => '6580',
+                'app_secret' => 'd5e5f29a194420217a853f03c85106e6',
+                'log_path' => storage_path('/logs/test.log'),
+            ];
+            return new MeituanTakeaway($config);
+        });
         $this->app->singleton('takeaway', function () {
             $config = [
                 'app_id' => 4625,

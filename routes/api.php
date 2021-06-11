@@ -3,6 +3,54 @@
 use Illuminate\Support\Facades\Route;
 
 /**
+ * 美团测试
+ */
+Route::group(['prefix' => 't'], function () {
+    // 创建订单
+    Route::post('order/create', 'OrderTestController@create')->name('m.order.test.refund.create');
+    // 订单取消
+    Route::get('order/cancel', 'OrderTestController@get_cancel')->name('m.order.test.get_cancel');
+    // Route::get('order/cancel', function() {
+    //     return json_encode(['data' => 'ok']);
+    // });
+    // 催单
+    Route::post('order/cui', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 降级
+    Route::post('order/jiang', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 退款
+    Route::get('order/refund', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 状态
+    Route::post('order/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 确认
+    Route::post('order/confirm_n', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 门店状态
+    Route::post('shop/status', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 完成
+    Route::post('order/over', function() {
+        return json_encode(['data' => 'ok']);
+    });
+    // 结算
+    Route::post('order/jie', 'OrderTestController@jie')->name('m.order.test.jie');
+    Route::post('order/refund/reject', 'OrderTestController@refundReject')->name('m.order.test.refund.reject');
+    Route::post('order/refund/agree', 'OrderTestController@refundAgree')->name('m.order.test.refund.agree');
+    Route::post('order/batchPullPhoneNumber', 'OrderTestController@batchPullPhoneNumber')->name('m.order.test.batchPullPhoneNumber');
+    Route::post('order/confirm', 'OrderTestController@confirm')->name('m.order.test.confirm');
+    Route::post('order/cancel', 'OrderTestController@cancel')->name('m.order.test.cancel');
+});
+
+/**
  * 毛绒熊
  */
 Route::group(['prefix' => 'm'], function () {
