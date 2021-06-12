@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+Route::post('fn/order', function() {
+    return json_encode(['code' => '200', 'msg' => 'success']);
+});
+
 /**
  * 美团测试
  */
